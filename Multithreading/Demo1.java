@@ -13,7 +13,7 @@ class MyThread extends Thread {
 }
 
 public class Demo1 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("In Main:");
         MyThread t = new MyThread();
