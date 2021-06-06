@@ -6,7 +6,7 @@ interface myLambda {
 }
 
 
-public class Main {
+public class Demo6 {
 
     public static void reverse(String str) {
         StringBuffer sb = new StringBuffer(str);
@@ -14,7 +14,7 @@ public class Main {
         System.out.println(sb);
     }
 
-    public static void Demo6(String[] args) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("In Main:");
 
