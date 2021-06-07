@@ -1,31 +1,23 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.SequenceInputStream;
 import java.lang.*;
 import java.util.Scanner;
+import java.io.*;
 
 
-public class Solution1 {
+public class Demo10 {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("In Main:");
 
-        FileInputStream fis1 = new FileInputStream("C:/Users/SANJAY/Downloads/Challenge2/Source1.txt");
-        FileInputStream fis2 = new FileInputStream("C:/Users/SANJAY/Downloads/Challenge2/Source2.txt");
-        FileOutputStream fos = new FileOutputStream("C:/Users/SANJAY/Downloads/Challenge2/Destination.txt");
+        ByteArrayOutputStream bos = new ByteArrayOutputStream(20);
 
-        SequenceInputStream sis = new SequenceInputStream(fis1, fis2);
+        bos.write('a');
+        bos.write('b');
+        bos.write('c');
+        bos.write('d');
 
-        int b;
-        while ((b = sis.read()) != -1) {
-            fos.write(b);
-        }
+        bos.writeTo(new FileOutputStream("C:/Users/SANJAY/Downloads/Test.txt"));
 
-        sis.close();
-        fis1.close();
-        fis2.close();
-        fos.close();
-
+        bos.close();
 
     }
 }
