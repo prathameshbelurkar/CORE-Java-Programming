@@ -1,31 +1,23 @@
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.FileInputStream;
 import java.lang.*;
 import java.util.Scanner;
 
 
-public class Demo3 {
-    public static void main(String[] args) {
+public class Demo5 {
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("In Main:");
 
-        try {
-            FileOutputStream fos = new FileOutputStream("C:/Users/SANJAY/Downloads/Demo3/Test.txt");
-            String str = "Learn Java Programming";
+        try (FileInputStream fis = new FileInputStream("C:/Users/SANJAY/Downloads/Demo4/Test.txt")) {
+            int x;
 
-            byte b[] = str.getBytes();
-            fos.write(b, 6, str.length()-6);
-
+            do
+            {
+                x = fis.read();
+                if (x != -1)
+                    System.out.print((char)x);
+            } while (x != -1);
         }
-        catch (FileNotFoundException e) {
-            System.out.println(e);
-        }
-        catch (IOException e) {
-            System.out.println(e);
-        }
-
-
 
     }
 }
