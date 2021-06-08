@@ -2,11 +2,34 @@ import java.lang.*;
 import java.util.Scanner;
 import java.io.*;
 
-class Student {
-    int rollno;
-    String name;
-    String dept;
-    float avg;
+class Student implements Serializable {
+
+    private String name;
+    private String dept;
+    private float avg;
+    private int rollno;
+    public static int data = 10;
+    public transient int t;
+
+    Student() {}
+
+    Student(int r, String n, String d, float a) {
+        name = n;
+        dept = d;
+        avg = a;
+        rollno = r;
+        data = 500;
+        t = 500;
+    }
+
+    public String toString() {
+        return "\nRoll No: "+rollno+
+                "\nName: "+name+
+                "\nDept: "+dept+
+                "\nAvg: "+avg+
+                "\ndata: "+data+
+                "\nt: "+t+"\n";
+    }
 }
 
 
@@ -15,24 +38,15 @@ public class Demo2 {
         Scanner sc = new Scanner(System.in);
         System.out.println("In Main:");
 
-        FileInputStream fis = new FileInputStream("C:/Users/SANJAY/Downloads/Demo18/Test.txt");
-        DataInputStream dis = new DataInputStream(fis);
+        FileInputStream fis = new FileInputStream("C:/Users/SANJAY/Downloads/Demo19/Test.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
 
-        Student s = new Student();
-
-        s.rollno = dis.readInt();
-        s.name = dis.readUTF();
-        s.dept = dis.readUTF();
-        s.avg = dis.readFloat();
-
-        System.out.println(s.rollno);
-        System.out.println(s.name);
-        System.out.println(s.dept);
-        System.out.println(s.avg);
+        Student s = (Student) ois.readObject();
+        System.out.println(s.toString());
 
 
-        dis.close();
         fis.close();
+        ois.close();
 
     }
 }
