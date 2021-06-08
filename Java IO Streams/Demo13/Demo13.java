@@ -19,6 +19,7 @@ public class Demo13 {
         bis.reset();
         System.out.print((char) bis.read());
         System.out.print((char) bis.read());
+        System.out.println("String: " + bis.readLine());
 
     }
 }
